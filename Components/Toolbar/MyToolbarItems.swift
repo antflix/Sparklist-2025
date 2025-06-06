@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Contacts
-import SwiftUI
 import Foundation
 
 @available(iOS 17.0, *)

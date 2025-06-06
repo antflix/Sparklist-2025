@@ -641,20 +641,41 @@ Spacer()
 //	15: 'Occupancy Dimmer Switch- lineVoltageSwitch',
     func loadMaterials() {
         print("METHOD loadMaterials")
-		var lineVoltageSwitchTotal = 0  // Temporary variable to accumulate counts
+        var lineVoltageSwitchTotal = 0  // Temporary variable to accumulate counts
+        var standardLightTotal = 0       // 2x2, 2x4, Linear
+        var emgLightTotal = 0            // EMG 2x2, EMG 2x4, EMG Canlight
+        var exitSignSurfaceTotal = 0
+        var exitSignBoxTotal = 0
+        var pendantLightTotal = 0
+        var threeWaySwitchTotal = 0
+        var ceilingMotionSensorTotal = 0
 
         for (device, count) in classCounts {
             if count != 0 {
                 switch device {
-				case "Line Voltage Switch":
-					lineVoltageSwitchTotal += count // Add count to the total
-					print("Line Voltage Switch count: \(count)")
-				case "Low Voltage Controlls Switch":
-					dataManager.lvCat5Switch = String(count)
-					print("Low Voltage Controlls Switch count: \(dataManager.lvCat5Switch)")
-				case "Occupency Dimmer Switch":
-					lineVoltageSwitchTotal += count // Add count to the total
-					print("Occupency Dimmer Switch count: \(count)")
+                case "Line Voltage Switch":
+                    lineVoltageSwitchTotal += count
+                    print("Line Voltage Switch count: \(count)")
+                case "Low Voltage Controlls Switch":
+                    dataManager.lvCat5Switch = String(count)
+                    print("Low Voltage Controlls Switch count: \(dataManager.lvCat5Switch)")
+                case "Occupency Dimmer Switch":
+                    lineVoltageSwitchTotal += count
+                    print("Occupency Dimmer Switch count: \(count)")
+                case "3-way Switch":
+                    threeWaySwitchTotal += count
+                case "Ceiling Mounted Motion Sensor":
+                    ceilingMotionSensorTotal += count
+                case "2x2", "2x4", "Linear", "Canlight", "Demo 2x2", "Demo 2x4", "Demo Canlight":
+                    standardLightTotal += count
+                case "EMG 2x2", "EMG 2x4", "EMG Canlight":
+                    emgLightTotal += count
+                case "Exit Sign":
+                    exitSignSurfaceTotal += count
+                case "Exit Sign- Box Mount":
+                    exitSignBoxTotal += count
+                case "Pendant Light":
+                    pendantLightTotal += count
                 case "Data Box":
                     dataManager.bracketBoxData = String(count)
                     print(dataManager.bracketBoxData)
@@ -678,9 +699,18 @@ Spacer()
                 }
             }
         }
-		// Set the total count for Line Voltage Switch in the dataManager
-		dataManager.lineVoltageSwitch = String(lineVoltageSwitchTotal)
-		print("Total Line Voltage Switch count: \(dataManager.lineVoltageSwitch)")
+
+        // Set totals for aggregated categories
+        dataManager.lineVoltageSwitch = String(lineVoltageSwitchTotal)
+        dataManager.twoXtwo = String(standardLightTotal)
+        dataManager.EMG2x2 = String(emgLightTotal)
+        dataManager.exitSign = String(exitSignSurfaceTotal)
+        dataManager.exitSignBox = String(exitSignBoxTotal)
+        dataManager.pendantLight = String(pendantLightTotal)
+        dataManager.threeWaySwitch = String(threeWaySwitchTotal)
+        dataManager.ceilingMotionSensor = String(ceilingMotionSensorTotal)
+
+        print("Total Line Voltage Switch count: \(dataManager.lineVoltageSwitch)")
     }
 
 	func uploadImage(completion: @escaping (Bool) -> Void) {

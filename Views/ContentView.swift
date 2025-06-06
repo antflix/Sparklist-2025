@@ -14,6 +14,7 @@ struct ContentView: View {
 
 
 
+
     enum Tab {
         case  start, material,/* jobs,*/ createProject, singleGangView, /*employee, employees, preview,*/ switches, lights, themes,/* outletcounter,*/ lightcounter, PDFImagesView, DeviceFinderAPI/*, SwipingTimeView*/
     }

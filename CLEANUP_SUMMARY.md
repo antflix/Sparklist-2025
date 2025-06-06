@@ -53,3 +53,4 @@ The remaining Swift files compile as before. Assets were untouched except for mo
 +    @EnvironmentObject var dataManager: DataManager
 +    @StateObject private var menuViewModel = MenuViewModel()
 ```
+

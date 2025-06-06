@@ -285,47 +285,49 @@ struct ChainedSpring_Previews4: PreviewProvider {
 	}
 }
 
+/*
 struct Spring: View {
-	@Binding var isShowing: Bool
+        @Binding var isShowing: Bool
 
-	@State private var isRotating = false
-	@State private var isHidden = false
+        @State private var isRotating = false
+        @State private var isHidden = false
 
-	var body: some View {
-		VStack(spacing: 14){
+        var body: some View {
+                VStack(spacing: 14){
 
-			Rectangle() // top
-				.frame(width: 64, height: 10)
-				.cornerRadius(4)
-				.rotationEffect(.degrees(isRotating ? 48 : 0), anchor: .leading)
+                        Rectangle() // top
+                                .frame(width: 64, height: 10)
+                                .cornerRadius(4)
+                                .rotationEffect(.degrees(isRotating ? 48 : 0), anchor: .leading)
 
-			Rectangle() // middle
-				.frame(width: 64, height: 10)
-				.cornerRadius(4)
-				.scaleEffect(isHidden ? 0 : 1, anchor: isHidden ? .trailing: .leading)
-				.opacity(isHidden ? 0 : 1)
+                        Rectangle() // middle
+                                .frame(width: 64, height: 10)
+                                .cornerRadius(4)
+                                .scaleEffect(isHidden ? 0 : 1, anchor: isHidden ? .trailing: .leading)
+                                .opacity(isHidden ? 0 : 1)
 
-			Rectangle() // bottom
-				.frame(width: 64, height: 10)
-				.cornerRadius(4)
-				.rotationEffect(.degrees(isRotating ? -48 : 0), anchor: .leading)
-		}
-		.animation(.spring(), value: isShowing)
-		.onTapGesture {
-			withAnimation {
-				isShowing.toggle()
-			}
-		}
-		.onTapGesture {
-			withAnimation(.spring()){
-				isRotating.toggle()
-				isHidden.toggle()
-				
-			}
-		}
+                        Rectangle() // bottom
+                                .frame(width: 64, height: 10)
+                                .cornerRadius(4)
+                                .rotationEffect(.degrees(isRotating ? -48 : 0), anchor: .leading)
+                }
+                .animation(.spring(), value: isShowing)
+                .onTapGesture {
+                        withAnimation {
+                                isShowing.toggle()
+                        }
+                }
+                .onTapGesture {
+                        withAnimation(.spring()){
+                                isRotating.toggle()
+                                isHidden.toggle()
 
-	}
+                        }
+                }
+
+        }
 }
+*/
 
 //struct Spring_Previews: PreviewProvider {
 //	@StateObject private var menuViewModel = MenuViewModel()

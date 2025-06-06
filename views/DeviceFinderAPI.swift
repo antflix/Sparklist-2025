@@ -706,7 +706,7 @@ Spacer()
                     print("Occupency Dimmer Switch count: \(count)")
                 case "3-way Switch":
                     threeWaySwitchTotal += count
-                case "Ceiling Mounted Motion Sensor", "Occupancy Sensor":
+                case "Ceiling Mounted Motion Sensor":
                     ceilingMotionSensorTotal += count
                 case "2x2", "2x4", "Linear", "Canlight", "Demo 2x2", "Demo 2x4", "Demo Canlight":
                     standardLightTotal += count

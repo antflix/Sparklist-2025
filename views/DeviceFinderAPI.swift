@@ -452,24 +452,66 @@ Spacer()
                                     Text(dataManager.gfci)
                                 }
                             }
-                            if Int(dataManager.wire3FurnitureFeed) ?? 0 > 0 {
-                                HStack {
-                                    Text("3 Wire Furniture Feed- ")
-                                    Spacer()
-                                    Text(dataManager.wire3FurnitureFeed)
-                                }
-                            }
-                            if Int(dataManager.bracketBoxData) ?? 0 > 0 {
-                                HStack {
-                                    Text("Data(Bracket Box)- ")
-                                    Spacer()
-                                    Text(dataManager.bracketBoxData)
-                                }
-                            }
-                        }
-                        Button(action: {
-                            self.showingSheet = false
-                            navigateToMaterialView = true
+                if Int(dataManager.wire3FurnitureFeed) ?? 0 > 0 {
+                    HStack {
+                        Text("3 Wire Furniture Feed- ")
+                        Spacer()
+                        Text(dataManager.wire3FurnitureFeed)
+                    }
+                }
+                if Int(dataManager.bracketBoxData) ?? 0 > 0 {
+                    HStack {
+                        Text("Data(Bracket Box)- ")
+                        Spacer()
+                        Text(dataManager.bracketBoxData)
+                    }
+                }
+                if Int(dataManager.twoXtwo) ?? 0 > 0 {
+                    HStack {
+                        Text("2x2, 2x4, Linear- ")
+                        Spacer()
+                        Text(dataManager.twoXtwo)
+                    }
+                }
+                if Int(dataManager.EMG2x2) ?? 0 > 0 {
+                    HStack {
+                        Text("EMG 2x2/2x4/Canlight- ")
+                        Spacer()
+                        Text(dataManager.EMG2x2)
+                    }
+                }
+                if Int(dataManager.ceilingMotionSensor) ?? 0 > 0 {
+                    HStack {
+                        Text("Ceiling Motion Sensor- ")
+                        Spacer()
+                        Text(dataManager.ceilingMotionSensor)
+                    }
+                }
+                if Int(dataManager.exitSign) ?? 0 > 0 {
+                    HStack {
+                        Text("Exit Sign Surface- ")
+                        Spacer()
+                        Text(dataManager.exitSign)
+                    }
+                }
+                if Int(dataManager.exitSignBox) ?? 0 > 0 {
+                    HStack {
+                        Text("Exit Sign Box Mount- ")
+                        Spacer()
+                        Text(dataManager.exitSignBox)
+                    }
+                }
+                if Int(dataManager.pendantLight) ?? 0 > 0 {
+                    HStack {
+                        Text("Pendant Light- ")
+                        Spacer()
+                        Text(dataManager.pendantLight)
+                    }
+                }
+            }
+            Button(action: {
+                self.showingSheet = false
+                navigateToMaterialView = true
 
                         }) {
                             Text("Import")
@@ -664,7 +706,7 @@ Spacer()
                     print("Occupency Dimmer Switch count: \(count)")
                 case "3-way Switch":
                     threeWaySwitchTotal += count
-                case "Ceiling Mounted Motion Sensor":
+                case "Ceiling Mounted Motion Sensor", "Occupancy Sensor":
                     ceilingMotionSensorTotal += count
                 case "2x2", "2x4", "Linear", "Canlight", "Demo 2x2", "Demo 2x4", "Demo Canlight":
                     standardLightTotal += count

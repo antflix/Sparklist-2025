@@ -175,7 +175,8 @@ struct MainView: View {
 		ZStack(alignment: .topLeading) {
 			// Your main content here
 
-			Spring(isShowing: $menuViewModel.isShowing)
+                        // Spring menu button disabled for consistency
+//                      Spring(isShowing: $menuViewModel.isShowing)
 
 			if menuViewModel.isShowing {
 				SlideMenu(isShowing: $menuViewModel.isShowing)

@@ -11,7 +11,6 @@ import SwiftUI
 @available(iOS 17.0, *)
 struct SingleGangView: View {
   @EnvironmentObject var dataManager: DataManager
-	@StateObject private var menuViewModel = MenuViewModel()
 
   var body: some View {
 	  
@@ -19,13 +18,14 @@ struct SingleGangView: View {
 		
 		ScrollView {
 			VStack {
-				Spring(isShowing: $menuViewModel.isShowing)
+                                // Spring menu button removed
+//                              Spring(isShowing: $menuViewModel.isShowing)
 
-				if menuViewModel.isShowing {
-					SlideMenu(isShowing: $menuViewModel.isShowing)
-						.frame(width: 300)
-						.transition(.move(edge: .leading))
-				}
+//                              if menuViewModel.isShowing {
+//                                      SlideMenu(isShowing: $menuViewModel.isShowing)
+//                                              .frame(width: 300)
+//                                              .transition(.move(edge: .leading))
+//                              }
 //
 //				Text("Outlets")
 //					.fontWeight(.black)
@@ -179,15 +179,15 @@ struct SingleGangView: View {
 		
 		.scrollDismissesKeyboard(.immediately)
 			sunview()
-		Spring(isShowing: $menuViewModel.isShowing)
+                // Spring menu button removed
+//              Spring(isShowing: $menuViewModel.isShowing)
 
-		if menuViewModel.isShowing {
-			SlideMenu(isShowing: $menuViewModel.isShowing)
-				.frame(width: 300)
-				.transition(.move(edge: .leading))
-		}
+//              if menuViewModel.isShowing {
+//                      SlideMenu(isShowing: $menuViewModel.isShowing)
+//                              .frame(width: 300)
+//                              .transition(.move(edge: .leading))
+//              }
 	}
-	.animation(.default, value: menuViewModel.isShowing)
 	.navigationBarHidden(true)
 	  Text("*Include GFCI and cut-in outlets in quantities.")
 		  .multilineTextAlignment(.center)

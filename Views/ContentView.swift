@@ -1,17 +1,16 @@
 //import MessageUI
 import SwiftUI
 
-class Item: ObservableObject, Identifiable {
-	let id = UUID()
-	@Published var name = ""
-	@Published var value = ""
+class ListItem: ObservableObject, Identifiable {
+    let id = UUID()
+    @Published var name = ""
+    @Published var value = ""
 }
 @available(iOS 17.0, *)
 struct ContentView: View {
-    @StateObject var dataManager = DataManager()
+    @EnvironmentObject var dataManager: DataManager
     @StateObject private var menuViewModel = MenuViewModel()
-//    @StateObject var darkModeSettings = DataManager() // Use observed object for dark modem
-	@State private var items: [Item] = []
+    //    @StateObject var darkModeSettings = DataManager() // Use observed object for dark mode
 
 
 

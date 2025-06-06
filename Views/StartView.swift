@@ -4,6 +4,7 @@
 //
 //  Created by User on 12/31/23.
 //
+import SwiftUI
 
 //
 //  userInput.swift
@@ -12,9 +13,6 @@
 //  Created by User on 12/29/23.
 
 
-import SwiftUI
-import SwiftUI
-import SwiftUI
 @available(iOS 17.0, *)
 struct StartView: View {
 	@State private var isPopupVisible = false
@@ -237,7 +235,6 @@ struct StartView: View {
 
 
 
-import SwiftUI
 
 @available(iOS 17.0, *)
 struct LandingPageView: View {
@@ -435,8 +432,6 @@ struct PressableButtonStyle: ButtonStyle {
 		}
 
 	}
-
-import SwiftUI
 
 @available(iOS 17.0, *)
 struct GlassyNavigationView: View {

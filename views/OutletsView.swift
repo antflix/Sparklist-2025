@@ -877,8 +877,14 @@ struct OutletCalculatorView: View {
 									"4in Floor Device": dataManager.in6FloorDevice,
 									"Single-Pole 277V 40A Instahot": dataManager.singlePole277V40AInstahot,
 									"2-Pole 208V 40A Instahot": dataManager.pole208V40AInstahot,
-									"Single-Pole 277V 30A Instahot": dataManager.singlePole277V30AInstahot,
-								]))
+                                                                        "Single-Pole 277V 30A Instahot": dataManager.singlePole277V30AInstahot,
+                                                                        "2x2, 2x4, Linear": dataManager.twoXtwo,
+                                                                        "Ceiling Motion Motion Sensor": dataManager.ceilingMotionSensor,
+                                                                        "EMG 2x2, EMG 2x4, EMG Linear": dataManager.EMG2x2,
+                                                                        "Exit Sign- Surface Mount": dataManager.exitSign,
+                                                                        "Exit Sign- Box Mount": dataManager.exitSignBox,
+                                                                        "Pendant Light": dataManager.pendantLight,
+                                                                ]))
 						
 					}
 					.padding()

@@ -452,24 +452,66 @@ Spacer()
                                     Text(dataManager.gfci)
                                 }
                             }
-                            if Int(dataManager.wire3FurnitureFeed) ?? 0 > 0 {
-                                HStack {
-                                    Text("3 Wire Furniture Feed- ")
-                                    Spacer()
-                                    Text(dataManager.wire3FurnitureFeed)
-                                }
-                            }
-                            if Int(dataManager.bracketBoxData) ?? 0 > 0 {
-                                HStack {
-                                    Text("Data(Bracket Box)- ")
-                                    Spacer()
-                                    Text(dataManager.bracketBoxData)
-                                }
-                            }
-                        }
-                        Button(action: {
-                            self.showingSheet = false
-                            navigateToMaterialView = true
+                if Int(dataManager.wire3FurnitureFeed) ?? 0 > 0 {
+                    HStack {
+                        Text("3 Wire Furniture Feed- ")
+                        Spacer()
+                        Text(dataManager.wire3FurnitureFeed)
+                    }
+                }
+                if Int(dataManager.bracketBoxData) ?? 0 > 0 {
+                    HStack {
+                        Text("Data(Bracket Box)- ")
+                        Spacer()
+                        Text(dataManager.bracketBoxData)
+                    }
+                }
+                if Int(dataManager.twoXtwo) ?? 0 > 0 {
+                    HStack {
+                        Text("2x2, 2x4, Linear- ")
+                        Spacer()
+                        Text(dataManager.twoXtwo)
+                    }
+                }
+                if Int(dataManager.EMG2x2) ?? 0 > 0 {
+                    HStack {
+                        Text("EMG 2x2/2x4/Canlight- ")
+                        Spacer()
+                        Text(dataManager.EMG2x2)
+                    }
+                }
+                if Int(dataManager.ceilingMotionSensor) ?? 0 > 0 {
+                    HStack {
+                        Text("Ceiling Motion Sensor- ")
+                        Spacer()
+                        Text(dataManager.ceilingMotionSensor)
+                    }
+                }
+                if Int(dataManager.exitSign) ?? 0 > 0 {
+                    HStack {
+                        Text("Exit Sign Surface- ")
+                        Spacer()
+                        Text(dataManager.exitSign)
+                    }
+                }
+                if Int(dataManager.exitSignBox) ?? 0 > 0 {
+                    HStack {
+                        Text("Exit Sign Box Mount- ")
+                        Spacer()
+                        Text(dataManager.exitSignBox)
+                    }
+                }
+                if Int(dataManager.pendantLight) ?? 0 > 0 {
+                    HStack {
+                        Text("Pendant Light- ")
+                        Spacer()
+                        Text(dataManager.pendantLight)
+                    }
+                }
+            }
+            Button(action: {
+                self.showingSheet = false
+                navigateToMaterialView = true
 
                         }) {
                             Text("Import")
@@ -908,6 +950,9 @@ Spacer()
         DispatchQueue.main.async {
             self.classCounts = classCounts
             print("!!!!!!\(self.classCounts)")
+            // Immediately populate DataManager with the latest counts so the
+            // import sheet reflects all detected devices
+            self.loadMaterials()
         }
         return newImage
     }

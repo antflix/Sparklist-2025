@@ -15,68 +15,68 @@ import SwiftUI
 // Class managing global variables
 class DataManager: ObservableObject {
 	static let shared = DataManager()
-	@Published var bracketBoxDuplex: String = ""
-	@Published var gfci: String = ""
-	@Published var cutin: String = ""
-	@Published var surfaceMounted: String = ""
-	@Published var controlled: String = ""
-	@Published var scaled: String = ""
-	@Published var quadBracketBox: String = ""
-	@Published var quadGFCI: String = ""
-	@Published var quadCutIn: String = ""
-	@Published var quadSurfaceMounted: String = ""
-	@Published var quadControlled: String = ""
+        @Published var bracketBoxDuplex: String = "0"
+        @Published var gfci: String = "0"
+        @Published var cutin: String = "0"
+        @Published var surfaceMounted: String = "0"
+        @Published var controlled: String = "0"
+        @Published var scaled: String = "0"
+        @Published var quadBracketBox: String = "0"
+        @Published var quadGFCI: String = "0"
+        @Published var quadCutIn: String = "0"
+        @Published var quadSurfaceMounted: String = "0"
+        @Published var quadControlled: String = "0"
 	@Published var employeeNames: [String] = []
 	@Published var boxTotal: String = ""
 	@Published var timeSelector: Int = 0
 	@Published var employeeIDs: [String: String] = [:]
 
-	@Published var wire3FurnitureFeed: String = ""
-	@Published var wire2FurnitureFeed: String = ""
-	@Published var bracketBoxData: String = ""
-	@Published var cutInData: String = ""
+        @Published var wire3FurnitureFeed: String = "0"
+        @Published var wire2FurnitureFeed: String = "0"
+        @Published var bracketBoxData: String = "0"
+        @Published var cutInData: String = "0"
 	
-	@Published var homerunLength: String = "" {
+        @Published var homerunLength: String = "0" {
 		didSet {
 			calculateMCTotal()
 		}
 	}
 	
-	@Published var homerunQuantity: String = "" {
+        @Published var homerunQuantity: String = "0" {
 		didSet {
 			calculateMCTotal()
 		}
 	}
-	@Published var mcTotal: String = ""
+        @Published var mcTotal: String = "0"
 	
-	@Published var lineVoltageDimmingSwitch: String = ""
-	@Published var lineVoltageDimmingCutin: String = ""
+        @Published var lineVoltageDimmingSwitch: String = "0"
+        @Published var lineVoltageDimmingCutin: String = "0"
 	
-	@Published var lvCat5Switch: String = ""
-	@Published var lvCat5Cutin: String = ""
+        @Published var lvCat5Switch: String = "0"
+        @Published var lvCat5Cutin: String = "0"
 	
-	@Published var lineVoltageSwitch: String = ""
-	@Published var lineVoltageCutIn: String = ""
+        @Published var lineVoltageSwitch: String = "0"
+        @Published var lineVoltageCutIn: String = "0"
 	
-	@Published var twoGangSwitch: String = ""
-	@Published var twoGangCutinSwitch: String = ""
-	@Published var lvTwoGangSwitch: String = ""
-	@Published var lvTwoGangCutinSwitch: String = ""
+        @Published var twoGangSwitch: String = "0"
+        @Published var twoGangCutinSwitch: String = "0"
+        @Published var lvTwoGangSwitch: String = "0"
+        @Published var lvTwoGangCutinSwitch: String = "0"
 
-	@Published var inFloorDevice: String = ""
-	@Published var in6FloorDevice: String = ""
-	@Published var singlePole277V40AInstahot: String = ""
-	@Published var pole208V40AInstahot: String = ""
-	@Published var singlePole277V30AInstahot: String = ""
+        @Published var inFloorDevice: String = "0"
+        @Published var in6FloorDevice: String = "0"
+        @Published var singlePole277V40AInstahot: String = "0"
+        @Published var pole208V40AInstahot: String = "0"
+        @Published var singlePole277V30AInstahot: String = "0"
 	
-	@Published var twoXtwo: String = ""
-	@Published var threeWaySwitch: String = ""
-	@Published var ceilingMotionSensor: String = ""
-	@Published var EMG2x2: String = ""
-	@Published var exitSign: String = ""
-	@Published var exitSignBox: String = ""
+        @Published var twoXtwo: String = "0"
+        @Published var threeWaySwitch: String = "0"
+        @Published var ceilingMotionSensor: String = "0"
+        @Published var EMG2x2: String = "0"
+        @Published var exitSign: String = "0"
+        @Published var exitSignBox: String = "0"
 
-	@Published var pendantLight: String = ""
+        @Published var pendantLight: String = "0"
 
 
 

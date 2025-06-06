@@ -9,6 +9,7 @@ class Item: ObservableObject, Identifiable {
 @available(iOS 17.0, *)
 struct ContentView: View {
     @StateObject var dataManager = DataManager()
+    @StateObject private var menuViewModel = MenuViewModel()
 //    @StateObject var darkModeSettings = DataManager() // Use observed object for dark modem
 	@State private var items: [Item] = []
 
@@ -81,7 +82,11 @@ struct ContentView: View {
 //
                 }
 
+                SlideMenu(isShowing: $menuViewModel.isShowing)
+                    .environmentObject(dataManager)
+
             }
+            .animation(.default, value: menuViewModel.isShowing)
         }
     }
 }

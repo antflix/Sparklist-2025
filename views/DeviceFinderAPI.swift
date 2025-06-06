@@ -452,24 +452,66 @@ Spacer()
                                     Text(dataManager.gfci)
                                 }
                             }
-                            if Int(dataManager.wire3FurnitureFeed) ?? 0 > 0 {
-                                HStack {
-                                    Text("3 Wire Furniture Feed- ")
-                                    Spacer()
-                                    Text(dataManager.wire3FurnitureFeed)
-                                }
-                            }
-                            if Int(dataManager.bracketBoxData) ?? 0 > 0 {
-                                HStack {
-                                    Text("Data(Bracket Box)- ")
-                                    Spacer()
-                                    Text(dataManager.bracketBoxData)
-                                }
-                            }
-                        }
-                        Button(action: {
-                            self.showingSheet = false
-                            navigateToMaterialView = true
+                if Int(dataManager.wire3FurnitureFeed) ?? 0 > 0 {
+                    HStack {
+                        Text("3 Wire Furniture Feed- ")
+                        Spacer()
+                        Text(dataManager.wire3FurnitureFeed)
+                    }
+                }
+                if Int(dataManager.bracketBoxData) ?? 0 > 0 {
+                    HStack {
+                        Text("Data(Bracket Box)- ")
+                        Spacer()
+                        Text(dataManager.bracketBoxData)
+                    }
+                }
+                if Int(dataManager.twoXtwo) ?? 0 > 0 {
+                    HStack {
+                        Text("2x2, 2x4, Linear- ")
+                        Spacer()
+                        Text(dataManager.twoXtwo)
+                    }
+                }
+                if Int(dataManager.EMG2x2) ?? 0 > 0 {
+                    HStack {
+                        Text("EMG 2x2/2x4/Canlight- ")
+                        Spacer()
+                        Text(dataManager.EMG2x2)
+                    }
+                }
+                if Int(dataManager.ceilingMotionSensor) ?? 0 > 0 {
+                    HStack {
+                        Text("Ceiling Motion Sensor- ")
+                        Spacer()
+                        Text(dataManager.ceilingMotionSensor)
+                    }
+                }
+                if Int(dataManager.exitSign) ?? 0 > 0 {
+                    HStack {
+                        Text("Exit Sign Surface- ")
+                        Spacer()
+                        Text(dataManager.exitSign)
+                    }
+                }
+                if Int(dataManager.exitSignBox) ?? 0 > 0 {
+                    HStack {
+                        Text("Exit Sign Box Mount- ")
+                        Spacer()
+                        Text(dataManager.exitSignBox)
+                    }
+                }
+                if Int(dataManager.pendantLight) ?? 0 > 0 {
+                    HStack {
+                        Text("Pendant Light- ")
+                        Spacer()
+                        Text(dataManager.pendantLight)
+                    }
+                }
+            }
+            Button(action: {
+                self.showingSheet = false
+                navigateToMaterialView = true
 
                         }) {
                             Text("Import")
@@ -641,20 +683,41 @@ Spacer()
 //	15: 'Occupancy Dimmer Switch- lineVoltageSwitch',
     func loadMaterials() {
         print("METHOD loadMaterials")
-		var lineVoltageSwitchTotal = 0  // Temporary variable to accumulate counts
+        var lineVoltageSwitchTotal = 0  // Temporary variable to accumulate counts
+        var standardLightTotal = 0       // 2x2, 2x4, Linear
+        var emgLightTotal = 0            // EMG 2x2, EMG 2x4, EMG Canlight
+        var exitSignSurfaceTotal = 0
+        var exitSignBoxTotal = 0
+        var pendantLightTotal = 0
+        var threeWaySwitchTotal = 0
+        var ceilingMotionSensorTotal = 0
 
         for (device, count) in classCounts {
             if count != 0 {
                 switch device {
-				case "Line Voltage Switch":
-					lineVoltageSwitchTotal += count // Add count to the total
-					print("Line Voltage Switch count: \(count)")
-				case "Low Voltage Controlls Switch":
-					dataManager.lvCat5Switch = String(count)
-					print("Low Voltage Controlls Switch count: \(dataManager.lvCat5Switch)")
-				case "Occupency Dimmer Switch":
-					lineVoltageSwitchTotal += count // Add count to the total
-					print("Occupency Dimmer Switch count: \(count)")
+                case "Line Voltage Switch":
+                    lineVoltageSwitchTotal += count
+                    print("Line Voltage Switch count: \(count)")
+                case "Low Voltage Controlls Switch":
+                    dataManager.lvCat5Switch = String(count)
+                    print("Low Voltage Controlls Switch count: \(dataManager.lvCat5Switch)")
+                case "Occupency Dimmer Switch":
+                    lineVoltageSwitchTotal += count
+                    print("Occupency Dimmer Switch count: \(count)")
+                case "3-way Switch":
+                    threeWaySwitchTotal += count
+                case "Ceiling Mounted Motion Sensor", "Occupancy Sensor":
+                    ceilingMotionSensorTotal += count
+                case "2x2", "2x4", "Linear", "Canlight", "Demo 2x2", "Demo 2x4", "Demo Canlight":
+                    standardLightTotal += count
+                case "EMG 2x2", "EMG 2x4", "EMG Canlight":
+                    emgLightTotal += count
+                case "Exit Sign":
+                    exitSignSurfaceTotal += count
+                case "Exit Sign- Box Mount":
+                    exitSignBoxTotal += count
+                case "Pendant Light":
+                    pendantLightTotal += count
                 case "Data Box":
                     dataManager.bracketBoxData = String(count)
                     print(dataManager.bracketBoxData)
@@ -678,9 +741,18 @@ Spacer()
                 }
             }
         }
-		// Set the total count for Line Voltage Switch in the dataManager
-		dataManager.lineVoltageSwitch = String(lineVoltageSwitchTotal)
-		print("Total Line Voltage Switch count: \(dataManager.lineVoltageSwitch)")
+
+        // Set totals for aggregated categories
+        dataManager.lineVoltageSwitch = String(lineVoltageSwitchTotal)
+        dataManager.twoXtwo = String(standardLightTotal)
+        dataManager.EMG2x2 = String(emgLightTotal)
+        dataManager.exitSign = String(exitSignSurfaceTotal)
+        dataManager.exitSignBox = String(exitSignBoxTotal)
+        dataManager.pendantLight = String(pendantLightTotal)
+        dataManager.threeWaySwitch = String(threeWaySwitchTotal)
+        dataManager.ceilingMotionSensor = String(ceilingMotionSensorTotal)
+
+        print("Total Line Voltage Switch count: \(dataManager.lineVoltageSwitch)")
     }
 
 	func uploadImage(completion: @escaping (Bool) -> Void) {
@@ -878,6 +950,9 @@ Spacer()
         DispatchQueue.main.async {
             self.classCounts = classCounts
             print("!!!!!!\(self.classCounts)")
+            // Immediately populate DataManager with the latest counts so the
+            // import sheet reflects all detected devices
+            self.loadMaterials()
         }
         return newImage
     }

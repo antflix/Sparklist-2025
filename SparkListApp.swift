@@ -100,11 +100,12 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
 }
 
 import Combine
-let dataManager = DataManager.shared // Change this line
+
 @available(iOS 17.0, *)
 @main
 struct SparkListApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject private var dataManager = DataManager.shared
     @State private var showSplash = true // Flag to control splash screen visibility
     @State private var showNotificationExplanation = false
     @State private var notificationPermissionRequested = false

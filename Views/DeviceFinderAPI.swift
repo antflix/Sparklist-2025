@@ -90,6 +90,10 @@ struct BlurView: UIViewRepresentable {
 //							drawBoundingBoxes(on:predictions:), redrawBoundingBoxes(for:), drawFilteredBoundingBoxes(on:filteredPredictions:): Functions for drawing bounding boxes around detected objects.
 //							Utility functions like getColor(forCategory:), generateRandomColor(), drawText(categoryName:count:at:in:), parseBoundingBox(_:), findNearestNeighbor(for:in:), determineLabelPosition(for:considering:), disableInteractivePopGesture(), enableInteractivePopGesture(), showAlert(message:) for various tasks including color management, text drawing, bounding box parsing, and gesture control.
 struct DeviceFinderAPI: View {
+<<<<<<< ijlxld-codex/refactor-and-reorganize-swiftui-codebase
+    @EnvironmentObject var dataManager: DataManager
+=======
+>>>>>>> main
     //	@State private var image: UIImage? = UIImage(named: "123.png")
     @State private var address: String = "https://ml.antflix.net/predict"
     @State private var predictions: [ObjectPrediction] = []

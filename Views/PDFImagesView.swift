@@ -6,7 +6,7 @@
 //
 import SwiftUI
 import PDFKit
-import SwiftUI
+
 
 struct PDFImagesView: View {
 	@State private var images: [UIImage] = []

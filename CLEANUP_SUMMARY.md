@@ -37,3 +37,20 @@
 
 ## Notes
 The remaining Swift files compile as before. Assets were untouched except for moving audio resources.
+
+### Key Diff Snippets
+
+**Inject DataManager via StateObject**
+```diff
+- let dataManager = DataManager.shared // Change this line
++ @StateObject private var dataManager = DataManager.shared
+```
+
+**Expose DataManager to ContentView**
+```diff
+ struct ContentView: View {
+-    @StateObject var darkModeSettings = DataManager() // Use observed object for dark mode
++    @EnvironmentObject var dataManager: DataManager
++    @StateObject private var menuViewModel = MenuViewModel()
+```
+

@@ -214,9 +214,7 @@ struct MaterialListView: View {
 	@EnvironmentObject var dataManager: DataManager
 
 
-	@State private var showMenu = true
-
-	@State private var selected = 4
+        @State private var selected = 4
 	func loadFromUserDefaults() {
 		if let savedData = UserDefaults.standard.data(forKey: "MaterialRequirements"),
 		   let decodedData = try? JSONDecoder().decode([String: [String: Int]].self, from: savedData)
@@ -271,8 +269,6 @@ struct MaterialListView: View {
 //			})
 			.navigationBarHidden(true)
 			.modifier(DarkModeLightModeBackground())
-//			SlideMenu( isShowing: $showMenu, materialRequirements: $materialRequirements)
-			SlideMenu( isShowing: $showMenu)
 
 		}
 		.id(dataManager.isDarkMode) 
